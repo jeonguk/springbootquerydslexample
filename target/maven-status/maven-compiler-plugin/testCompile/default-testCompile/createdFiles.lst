@@ -1,8 +1,0 @@
-com/jeonguk/repository/CompanyJpaRepositoryTest.class
-com/jeonguk/dao/impl/CompanyDaoImplTest.class
-com/jeonguk/service/ContactServiceTest.class
-com/jeonguk/dao/impl/ContactQuerydslDaoImplTest.class
-com/jeonguk/ApplicationTest.class
-com/jeonguk/service/CompanyServiceTest.class
-com/jeonguk/repository/ContactQuerydslRepositoryTest.class
-com/jeonguk/TestData.class
