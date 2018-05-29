@@ -7,8 +7,10 @@ import com.jeonguk.entity.Contact;
 import com.jeonguk.entity.ContactType;
 import com.jeonguk.service.CompanyService;
 import com.jeonguk.service.ContactService;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -20,6 +22,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ContactQuerydslRepositoryTest extends TestData {
 
 	@Autowired
@@ -43,7 +46,7 @@ public class ContactQuerydslRepositoryTest extends TestData {
 		assertEquals("Zheng", found.getLastName());
 		assertEquals(ContactType.PRIMARY, found.getType());
 
-		Contact alex = contactService.save(company, "Alex", "Zheng", ContactType.SEONDARY);
+		Contact alex = contactService.save(company, "Alex", "Zheng", ContactType.SECONDARY);
 		List<Contact> rets = demo.findByCompany(company);
 
 		assertNotNull(rets);

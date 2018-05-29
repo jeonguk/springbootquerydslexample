@@ -8,5 +8,5 @@ import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import java.util.List;
 
 public interface ContactQuerydslRepository extends JpaRepository<Contact, Long>, QueryDslPredicateExecutor<Contact> {
-	public List<Contact> findByCompany(Company company);
+	List<Contact> findByCompany(Company company);
 }

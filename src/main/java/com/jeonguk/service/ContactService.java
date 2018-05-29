@@ -23,9 +23,9 @@ public class ContactService {
 		QContact contEquation = QContact.contact;
 		Predicate cnt = contEquation.firstName.contains(firstName);
 		Iterable<Contact> contacts = contactDslRepo.findAll(cnt);
-		for (Contact e : contacts) {
+		contacts.forEach(e -> {
 			ret.add(e);
-		}
+		});
 		return ret;
 	}
 

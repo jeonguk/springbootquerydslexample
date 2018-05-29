@@ -22,23 +22,17 @@ public class CompanyService {
 
 	public List<Company> searchByNameAndType(String companyName, CompanyType type) {
 
-		List<Company> companies = companyJpaRepo.findAll(new Specification<Company>() {
+		return companyJpaRepo.findAll((root, query, cb) -> {
 
-			@Override
-			public Predicate toPredicate(Root<Company> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-
-				Predicate matchType = cb.equal(root.<CompanyType> get("type"), type);
-				Predicate returnPredicate = cb.and(matchType);
-				if (!StringUtils.isEmpty(companyName)) {
-					Predicate matchName = cb.equal(root.<String> get("name"), companyName);
-					returnPredicate = cb.and(matchType, matchName);
-				}
-
-				return returnPredicate;
+			Predicate matchType = cb.equal(root.<CompanyType> get("type"), type);
+			Predicate returnPredicate = cb.and(matchType);
+			if (!StringUtils.isEmpty(companyName)) {
+				Predicate matchName = cb.equal(root.<String> get("name"), companyName);
+				returnPredicate = cb.and(matchType, matchName);
 			}
-		});
 
-		return companies;
+			return returnPredicate;
+		});
 	}
 
 	public Company save(Company company) {
